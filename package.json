@@ -10,9 +10,12 @@
   "author": "minlaxz",
   "license": "MIT",
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "multer": "^1.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minlaxz/node-share-it.git"
   }
 }
