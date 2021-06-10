@@ -25,7 +25,7 @@ const handleError = (err, res) => {
     //     .contentType("text/plain")
     //     .end(`Informative Debugger : Oops! Something went wrong!\n${err}`);
     // res.sendFile(`${__dirname}/public/error.html` , {error:err})
-    res.sendFile(`${__dirname}/public/error.html` , {error:"Error message"})
+    res.render("error", { error: err })
 
     // res.redirect("/error")
 };
@@ -58,12 +58,12 @@ app.get("/", (req, res) => {
 
 app.get("/success", (req, res) => {
     res.render('success')
-    // res.sendFile(`${__dirname}/public/success.html`)                                                                                                                                                                                                                                                                                                                                                                    
+    // res.sendFile(`${__dirname}/public/success.html`)
 })
 
 
 app.get("/error", (req, res) => {
-    res.render('error', {error: "Error Message"})
+    res.render('error', { error: "Error Message" })
     // res.sendFile(`${__dirname}/public/error.html` , {error:"Error message"})
 })
 
