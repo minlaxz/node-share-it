@@ -4,9 +4,19 @@ const multer = require("multer");
 const fs = require("fs");
 const dotenv = require("dotenv")
 
+
 dotenv.config()
 const app = express();
+
 app.use(express.static(__dirname + '/public'));
+
+// Set 'views' directory for any views 
+// being rendered res.render()
+app.set('views', path.join(__dirname, 'public/views'));
+
+// Set view engine as EJS
+// app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 
 const handleError = (err, res) => {
     console.log(err)
@@ -14,7 +24,10 @@ const handleError = (err, res) => {
     //     .status(500)
     //     .contentType("text/plain")
     //     .end(`Informative Debugger : Oops! Something went wrong!\n${err}`);
-    res.sendFile(`${__dirname}/public/error.html`)
+    // res.sendFile(`${__dirname}/public/error.html` , {error:err})
+    res.sendFile(`${__dirname}/public/error.html` , {error:"Error message"})
+
+    // res.redirect("/error")
 };
 
 
@@ -40,16 +53,18 @@ const upload = multer({ storage: storage }).array('file', 12);
 
 // app.get("/", express.static(path.join(__dirname, "./public")));
 app.get("/", (req, res) => {
-    res.render('/index.html')
+    res.render('index')
 })
 
 app.get("/success", (req, res) => {
-    res.sendFile(`${__dirname}/public/success.html`)
+    res.render('success')
+    // res.sendFile(`${__dirname}/public/success.html`)                                                                                                                                                                                                                                                                                                                                                                    
 })
 
 
 app.get("/error", (req, res) => {
-    res.sendFile(`${__dirname}/public/error.html`)
+    res.render('error', {error: "Error Message"})
+    // res.sendFile(`${__dirname}/public/error.html` , {error:"Error message"})
 })
 
 app.post('/upload', function (req, res, next) {

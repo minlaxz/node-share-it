@@ -1,0 +1,10 @@
+body {
+    /* background-image: url("../images/paper2.gif"); */
+    background-color: #1b1b1b;
+    background-size: device-height;                 
+   }
+
+.btn-block {
+    width:100%;
+    height:auto;
+}
