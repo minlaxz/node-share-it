@@ -1,2 +1,0 @@
-docker built -t minlaxz/node_share_it .
-docker run --name share_to_this -d -p 5500:3000 -v $HOME/windows_shared/image_uploads:/usr/src/app/uploads --cpus=".5" --memory="512m" --restart unless-stopped minlaxz/node_share_it
